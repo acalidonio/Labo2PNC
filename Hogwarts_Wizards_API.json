@@ -1,0 +1,159 @@
+{
+  "info": {
+    "name": "Registro de Magos de Hogwarts (Ministerio de Magia)",
+    "description": "API REST para gestionar el registro de magos, modernizando los sistemas del mundo mágico.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Registrar mago",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Harry Potter\",\n  \"house\": \"Gryffindor\",\n  \"patronus\": \"Stag\",\n  \"isDeatheater\": false\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/wizards",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "wizards"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Obtener todos los magos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/wizards",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "wizards"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Obtener solo los Mortífagos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/wizards/deatheaters",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "wizards",
+            "deatheaters"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Actualizar mago",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Draco Malfoy\",\n  \"house\": \"Slytherin\",\n  \"patronus\": \"None\",\n  \"isDeatheater\": true\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/wizards/:id",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "wizards",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "colocar-uuid-aqui"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Obtener por nombre de patronus",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/wizards/patronus/Stag",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "wizards",
+            "patronus",
+            "Stag"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Eliminar mago",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/wizards/delete/:id",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "wizards",
+            "delete",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "colocar-uuid-aqui"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
