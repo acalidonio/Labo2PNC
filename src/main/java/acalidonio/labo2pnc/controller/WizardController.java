@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/wizards")
@@ -25,4 +26,26 @@ public class WizardController {
         return ResponseEntity.ok(wizardService.getAllWizards());
     }
 
+    @GetMapping("/deatheaters")
+    public ResponseEntity<List<Wizard>> getDeatheaters() {
+        return ResponseEntity.ok(wizardService.getDeatheaters());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Wizard> updateWizard(@PathVariable UUID id, @RequestBody Wizard wizard) {
+        return wizardService.updateWizard(id, wizard)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/patronus/{patronus}")
+    public ResponseEntity<List<Wizard>> getWizardsByPatronus(@PathVariable String patronus) {
+        return ResponseEntity.ok(wizardService.getByPatronus(patronus));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteWizard(@PathVariable UUID id) {
+        wizardService.deleteWizard(id);
+        return ResponseEntity.noContent().build();
+    }
 }
